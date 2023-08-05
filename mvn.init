@@ -1,0 +1,7 @@
+Project :
+mvn archetype:generate \
+  -DgroupId=ca.tutic.aoc \
+  -DartifactId=aoc \
+  -DarchetypeArtifactId=maven-archetype-quickstart \
+  -DarchetypeVersion=1.4 \
+  -DinteractiveMode=false

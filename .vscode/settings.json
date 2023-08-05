@@ -1,0 +1,5 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.jdt.ls.java.home": "/usr/lib/jvm/java-20-openjdk-amd64"
+}
