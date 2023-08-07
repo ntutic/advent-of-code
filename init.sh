@@ -32,10 +32,10 @@ public class Day${zpDay} extends Day20${year}{
 
     public Day${zpDay}() {
         super(${day});
+        inputFile = \"day${zpDay}.txt\";
     }
 
     public String getPart1() {
-        inputFile = "day${zpDay}.txt";
         return \"INCOMPLETE\";
     }  
 
