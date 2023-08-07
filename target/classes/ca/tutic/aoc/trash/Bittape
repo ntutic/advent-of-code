@@ -1,4 +1,4 @@
-package ca.tutic.aoc.common;
+package ca.tutic.aoc.trash;
 
 import java.util.BitSet;
 

@@ -1,7 +1,7 @@
 ca/tutic/aoc/common/Day.class
-ca/tutic/aoc/year19/Day2019.class
 ca/tutic/aoc/common/Intcode$Command.class
-ca/tutic/aoc/year19/days/Day01.class
 ca/tutic/aoc/Run.class
-ca/tutic/aoc/common/Intcode.class
 ca/tutic/aoc/year19/days/Day02.class
+ca/tutic/aoc/year19/Day2019.class
+ca/tutic/aoc/year19/days/Day01.class
+ca/tutic/aoc/common/Intcode.class

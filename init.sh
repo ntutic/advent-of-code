@@ -16,8 +16,9 @@ mkdir -p src/test/java/ca/tutic/aoc/year${year}/days
 
 main_file="src/main/java/ca/tutic/aoc/year${year}/days/Day${zpDay}.java"
 test_file="src/test/java/ca/tutic/aoc/year${year}/days/Day${zpDay}Test.java"
+input_file="src/main/resources/year${year}/day${zpDay}.txt"
 
-if [ -f "$main_file" ] || [ -f "$test_file" ]; then 
+if [ -f "$main_file" ] || [ -f "$test_file" ] || [ -f "$input_file" ]; then 
     exit 1 
 fi
 
@@ -27,12 +28,14 @@ import ca.tutic.aoc.year${year}.Day20${year};
 
 
 public class Day${zpDay} extends Day20${year}{
+    private String inputFile;
 
     public Day${zpDay}() {
         super(${day});
     }
 
     public String getPart1() {
+        inputFile = "day${zpDay}.txt";
         return \"INCOMPLETE\";
     }  
 
@@ -57,3 +60,5 @@ public class Day${zpDay}Test {
         //assertEquals(day.getPart2(), \"\");
     }
 }" > $test_file
+
+echo "" > $input_file
