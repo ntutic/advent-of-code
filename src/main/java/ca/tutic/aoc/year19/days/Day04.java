@@ -13,24 +13,22 @@ public class Day04 extends Day2019{
         inputFile = "day04.txt";
     }
 
-    public String getPart1() {
+    public Object getPart1() {
         String input = getResourceString(inputFile);
         int from = Integer.parseInt(input.split("-")[0]);
         int to = Integer.parseInt(input.split("-")[1]);
 
-        return String.valueOf(
-            IntStream.range(from, to + 1).reduce(0, (t, x) -> t + validate(x, (y) -> y >= 2))
-        );
+        return IntStream.range(from, to + 1)
+                        .reduce(0, (t, x) -> t + validate(x, (y) -> y >= 2));
     }  
 
-    public String getPart2() {
+    public Object getPart2() {
         String input = getResourceString(inputFile);
         int from = Integer.parseInt(input.split("-")[0]);
         int to = Integer.parseInt(input.split("-")[1]);
 
-        return String.valueOf(
-            IntStream.range(from, to + 1).reduce(0, (t, x) -> t + validate(x, (y) -> y == 2))
-        );
+        return IntStream.range(from, to + 1)
+                        .reduce(0, (t, x) -> t + validate(x, (y) -> y == 2));
     }
 
     public int validate(int code, Predicate<Integer> consecutiveTest) {

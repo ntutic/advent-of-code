@@ -9,22 +9,18 @@ public class Day01 extends Day2019{
         super(1);
     }
 
-    public String getPart1() {
-        return String.valueOf(
-            super.getResourceReader("day01.txt")
-            .lines()
-            .mapToInt(Integer::parseInt)
-            .reduce(0, (total, x) -> total + fuel(x))
-        );
+    public Object getPart1() {
+        return super.getResourceReader("day01.txt")
+                    .lines()
+                    .mapToInt(Integer::parseInt)
+                    .reduce(0, (total, x) -> total + fuel(x));
     }  
 
-    public String getPart2() {
-        return String.valueOf(
-            super.getResourceReader("day01.txt")
-            .lines()
-            .mapToInt(Integer::parseInt)
-            .reduce(0, (total, x) -> total + recursiveFuel(x))
-        );
+    public Object getPart2() {
+        return super.getResourceReader("day01.txt")
+                    .lines()
+                    .mapToInt(Integer::parseInt)
+                    .reduce(0, (total, x) -> total + recursiveFuel(x));
     }
 
     public int fuel(int mass) {

@@ -1,7 +1,7 @@
 package ca.tutic.aoc.year19.days;
 
+import ca.tutic.aoc.common.wires.PointSet;
 import ca.tutic.aoc.year19.Day2019;
-import ca.tutic.aoc.common.PointSet;
 
 public class Day03 extends Day2019{
     private String inputFile;
@@ -16,7 +16,7 @@ public class Day03 extends Day2019{
         inputFile = file;
     }
 
-    public String getPart1() {
+    public Object getPart1() {
         String resource = getResourceString(inputFile);
         String[] inputs = resource.split(System.lineSeparator());
         PointSet points1 = new PointSet();
@@ -24,12 +24,10 @@ public class Day03 extends Day2019{
         points1.instructions(inputs[0]);
         points2.instructions(inputs[1]);
         points1.intersect(points2);
-        return String.valueOf(
-            points1.findClosest(0, 0)
-        );
+        return points1.findClosest(0, 0);
     }  
 
-    public String getPart2() {
+    public Object getPart2() {
         String resource = getResourceString(inputFile);
         String[] inputs = resource.split(System.lineSeparator());
         PointSet points1 = new PointSet();
@@ -37,9 +35,7 @@ public class Day03 extends Day2019{
         points1.instructions(inputs[0]);
         points2.instructions(inputs[1]);
         points1.intersect(points2);
-        return String.valueOf(
-            points1.findShortest()
-        );
+        return points1.findShortest();
     }  
 }
 

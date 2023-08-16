@@ -35,11 +35,11 @@ public class Day${zpDay} extends Day20${year}{
         inputFile = \"day${zpDay}.txt\";
     }
 
-    public String getPart1() {
+    public Object getPart1() {
         return \"INCOMPLETE\";
     }  
 
-    public String getPart2() {
+    public Object getPart2() {
         return \"INCOMPLETE\";
     }
 }
@@ -56,8 +56,8 @@ public class Day${zpDay}Test {
 
     @Test
     public void dayTest() {
-        //assertEquals(day.getPart1(), \"\");
-        //assertEquals(day.getPart2(), \"\");
+        //assertEquals(day.getPart1().toString(), \"\");
+        //assertEquals(day.getPart2().toString(), \"\");
     }
 }" > $test_file
 

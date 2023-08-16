@@ -6,8 +6,8 @@ import java.io.BufferedReader;
 
 
 public abstract class Day2019 extends Day {
-    public abstract String getPart1();
-    public abstract String getPart2();
+    public abstract Object getPart1();
+    public abstract Object getPart2();
 
     public Day2019(int day) {
         super(2019, day);

@@ -9,7 +9,7 @@ public class Day02Test {
 
     @Test
     public void dayTest() {
-        assertEquals(day.getPart1(), "3101844");
-        assertEquals(day.getPart2(), "8478");
+        assertEquals(day.getPart1().toString(), "3101844");
+        assertEquals(day.getPart2().toString(), "8478");
     }
 }

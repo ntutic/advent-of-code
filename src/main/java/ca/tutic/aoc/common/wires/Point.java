@@ -1,4 +1,4 @@
-package ca.tutic.aoc.common;
+package ca.tutic.aoc.common.wires;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package ca.tutic.aoc.common;
+package ca.tutic.aoc.common.intcode;
 
 public class Opcodes {
     public enum Opcode {

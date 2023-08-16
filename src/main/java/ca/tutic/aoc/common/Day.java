@@ -8,8 +8,8 @@ import java.nio.charset.StandardCharsets;
 public abstract class Day {
     public int year;
     public int day;
-    public abstract String getPart1();
-    public abstract String getPart2();
+    public abstract Object getPart1();
+    public abstract Object getPart2();
 
     public Day(int year, int day) {
         this.year = year;
@@ -18,8 +18,8 @@ public abstract class Day {
 
     public void printDay() {
         System.out.printf("Day %d%n", day);
-        System.out.printf("Part 1: %s%n", getPart1());
-        System.out.printf("Part 2: %s%n%n", getPart2());
+        System.out.printf("Part 1: %s%n", getPart1().toString());
+        System.out.printf("Part 2: %s%n%n", getPart2().toString());
     }
 
     public BufferedReader getResourceReader(String path) {

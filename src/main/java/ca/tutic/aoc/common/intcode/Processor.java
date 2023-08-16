@@ -1,8 +1,4 @@
-package ca.tutic.aoc.common;
-
-import ca.tutic.aoc.common.Opcodes;
-import ca.tutic.aoc.common.Opcodes.Opcode.*;
-
+package ca.tutic.aoc.common.intcode;
 
 import java.lang.UnsupportedOperationException;
 import java.util.Arrays;
@@ -10,32 +6,60 @@ import java.util.function.IntBinaryOperator;
 import java.util.function.IntPredicate;
 import org.d2ab.function.IntBiPredicate;
 
-public class Intcode {
-    int[] program;
-    int input;
-    int diagnostic = 0;
+import ca.tutic.aoc.common.utils.Printers; 
 
-    public Intcode(String program) {
-        this(program, 0);
+public class Processor {
+    int[] sourceCode;
+    int[] program;
+    int diagnostic = 0;
+    boolean debugging;
+
+    public Processor(String sourceCode) {
+        this(sourceCode, false);
     }
 
-    public Intcode(String program, int input) {
-        this.program = Arrays.stream(program.split(","))
+    public Processor(String sourceCode, boolean debugging) {
+        this.sourceCode = Arrays.stream(sourceCode.split(","))
                              .mapToInt(Integer::parseInt)
                              .toArray();
-        this.input = input;
+        this.debugging = debugging;
     }
     
     public void initialize(int noun, int verb) {
-        program[1] = noun;
-        program[2] = verb;
+        sourceCode[1] = noun;
+        sourceCode[2] = verb;
     }
 
-    public int run() throws UnsupportedOperationException{
+    public int run() {
+        return run(new int[0]);
+    }
+    
+    public int run(int input) {
+        return run(new int[0], input);
+    }
+
+    public int run(int[] phases) {
+        return run(phases, 0);
+    }
+
+    public int run(int[] phases, int input) throws UnsupportedOperationException{
+        program = Arrays.copyOfRange(sourceCode, 0, sourceCode.length);
+        
+        int phase;
+        if (phases.length > 0) {
+            phase = phases[0];
+            phases = Arrays.copyOfRange(phases, 1, phases.length);
+        } else {
+            phase = -1;
+        }
+
         int i = 0;
         int[] modes;
         Opcodes.Opcode opcode;
         while (i < program.length) {
+            if (this.debugging) {
+                Printers.printArray(program, i);
+            }
             opcode = Opcodes.getOpcode(program[i] % 100);
             modes = getModes(program[i]);
             switch (opcode) {
@@ -48,7 +72,12 @@ public class Intcode {
                     i += 4;     
                     break;      
                 case INPUT:
-                    setValue(i + 1, input);
+                    if (phase != -1) {
+                        setValue(i + 1, phase);
+                        phase = -1;
+                    } else {
+                        setValue(i + 1, input);
+                    }                    
                     i += 2;
                     break;       
                 case OUTPUT:
@@ -70,7 +99,11 @@ public class Intcode {
                     i += 4;
                     break;                
                 case TERMINATE: 
-                    return (diagnostic == 0 ? program[0] : diagnostic);
+                    if (phases.length == 0) {
+                        return (diagnostic == 0 ? program[0] : diagnostic);
+                    } else {
+                        return run(phases, (diagnostic == 0 ? program[0] : diagnostic));
+                    }
             }
         }
         throw new UnsupportedOperationException("Invalid program: no termination opcode found.");
